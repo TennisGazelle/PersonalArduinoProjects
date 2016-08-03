@@ -1,2 +1,4 @@
-# PersonalArduinoProjects
-For Arduino Home Projects and primarily as a way to start using GitHub and know what it really can do. 
+# Startup Environment
+
+Mostly scripts that need to be run whenever a new Debian based is being started on
+
