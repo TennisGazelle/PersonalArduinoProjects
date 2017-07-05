@@ -1,0 +1,21 @@
+# Helper file for git
+source ~/.git-completion.bash
+
+# Creating branch shortcut
+gcreate() { git checkout -b $@ && git push origin $@ git branch --set-upstream-to=origin/$(git_current_branch) ; }
+
+# Some extra aliases (that I may have to get used to)
+alias g="git "
+alias co="checkout"
+alias s="status"
+alias a="add"
+alias c="commit"
+alias delete="git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+function parse_git_branch { 
+   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/' 
+} 
+
+export PS1="\u:\h \w\$(parse_git_branch)\n\W 🔳  \\$ "
+
+export SPRING_CLOUD_CONFIG_SERVER_GIT_USERNAME=fe0b674bb8bc47234da2948a96d7c0c7ec7a278d
