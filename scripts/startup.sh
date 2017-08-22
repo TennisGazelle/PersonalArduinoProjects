@@ -4,9 +4,6 @@
 # START UP SCRIPT
 #
 
-## Update beforehand
-sudo apt-get update
-
 # g++ compiler
 PROGRAMS="g++"
 
@@ -24,3 +21,7 @@ PROGRAMS="$PROGRAMS sublime-text"
 # install these
 echo "$PROGRAMS will be installed"
 sudo apt-get install $PROGRAMS
+
+# download, install and run dropbox
+#cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+#~/.dropbox-dist/dropboxd &
