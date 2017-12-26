@@ -2,7 +2,7 @@
 source ~/.git-completion.bash
 
 # Creating branch shortcut
-gcreate() { git checkout -b $@ && git push origin $@ git branch --set-upstream-to=origin/$(git_current_branch) ; }
+gcreate() { git checkout -b $@ && git push -u origin $@ ; }
 
 # Some extra aliases (that I may have to get used to)
 alias g="git "
@@ -12,11 +12,22 @@ alias a="add"
 alias c="commit"
 alias delete="git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
-# fun aliases
+# file directory aliases
+alias ..='cd ../'
+alias ...='cd ../../'
+alias ....='cd ../../../'
 
+# network config aliases
+# simple ip
+alias ip='ifconfig | grep "inet "'
+# more details
+alias ip1="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+# external ip
+alias ipout="curl -s http://www.icanhazip.com"
+
+# fun aliases
 function google() { open /Applications/Google\ Chrome.app/ "http://www.google.com/search?q= $1"; }
 function youtube() { open /Applications/Google\ Chrome.app/ "https://www.youtube.com/results?search_query= $1"; }
-
 
 function parse_git_branch { 
    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/' 
