@@ -6,6 +6,7 @@
 
 # g++ compiler
 PROGRAMS="g++"
+PROGRAMS="$PROGRAMS tmux cmake make"
 
 # git (which should've already been installed)
 PROGRAMS="$PROGRAMS git"
