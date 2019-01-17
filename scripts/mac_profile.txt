@@ -7,6 +7,10 @@ source ~/.git-completion.bash
 # Creating branch shortcut
 gcreate() { git checkout -b $@ && git push -u origin $@ ; }
 
+#### DEVGRU ALIASES ####
+alias remake=~/dev/devgru/resources/make-fresh-npm-punching-bag.sh
+alias copyover=~/dev/devgru/resources/copy-local-dist-to-punching-bag.sh
+
 # Some extra aliases (that I may have to get used to)
 alias g="git "
 alias co="checkout"
@@ -65,6 +69,14 @@ function rand_between() {
     awk awkArgument
 }
 
+# all of these reactions are from http://wrttn.me/30dbfd/
+happy[0]="\(• ◡ •)/"
+happy[1]="◕ ◡ ◕"
+happy[2]="\( ﾟ◡ﾟ)/"
+
+# randomized selection from https://stackoverflow.com/questions/35623462/bash-select-random-string-from-list
+happysize=${#happy[@]}
+
 function makePS1() {
     rc="$?"
     PS1="\u:\h \w \[\033[36m\]\$(parse_git_branch)"
@@ -72,19 +84,30 @@ function makePS1() {
         PS1+="\e[31m "
         if [[ $rc -eq 1 ]]; then
             PS1+="ಠ~ಠ "
-        fi
-        if [[ $rc -eq 127 ]]; then
+        elif [[ $rc -eq 127 ]]; then
             PS1+="ಠ_ಠ "
-        fi
-        if [[ $rc -eq 128 ]]; then
+        elif [[ $rc -eq 128 ]]; then
             PS1+="◴_◶ "
         fi
         PS1+="\e[33m$rc"
+    else
+        PS1+=" ${happy[$(($RANDOM % $happysize))]}"
     fi
-    PS1+="\n\[\033[32m\]\W \[\033[m\]\\$ "    
+    PS1+="\[\033[32m\]\n\W \[\033[m\]\\$ "    
 }
 
 PROMPT_COMMAND=makePS1
+
+#Useful commands
+    # # https://stackoverflow.com/questions/2517339/how-to-recover-the-file-permissions-to-what-git-thinks-the-file-should-be
+    # # Revert file permissions to what github thinks they're supposed to be
+    # git diff -p -R --no-color \
+    #     | grep -E "^(diff|(old|new) mode)" --color=never  \
+    #     | git apply
+
+    # #One liner to make it aliasable to git permission-reset
+    # git config --global --add alias.permission-reset '!git diff -p -R --no-color | grep -E "^(diff|(old|new) mode)" --color=never | git apply'
+    # git permission-reset
 
 #export NVM_DIR="$HOME/.nvm"
 #. "/usr/local/opt/nvm/nvm.sh"
