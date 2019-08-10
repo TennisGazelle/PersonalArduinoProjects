@@ -26,6 +26,9 @@ alias ..='cd ../'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 
+# install micro text editor
+$ curl https://getmic.ro | bash
+
 # network config aliases
 # simple ip
 alias ip='ifconfig | grep "inet "'
