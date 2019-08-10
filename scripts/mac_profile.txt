@@ -72,10 +72,17 @@ function rand_between() {
     awk awkArgument
 }
 
-# all of these reactions are from http://wrttn.me/30dbfd/
+# all of these reactions are from http://wrttn.me/30dbfd/ and lennyfaces.net
+lenny[0]="( ͡° ͜ʖ ͡°)"
+lenny[1]="( ° ͜ʖ °)"
+
 happy[0]="\(• ◡ •)/"
 happy[1]="◕ ◡ ◕"
 happy[2]="\( ﾟ◡ﾟ)/"
+happy[3]="(づ｡◕‿‿◕｡)づ"
+happy[4]="●‿●"
+happy[5]=${lenny[0]}
+happy[6]=${lenny[1]}
 
 # randomized selection from https://stackoverflow.com/questions/35623462/bash-select-random-string-from-list
 happysize=${#happy[@]}
